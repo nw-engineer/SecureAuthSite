@@ -10,7 +10,7 @@ function LoginForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://10.2.0.50:4002/auth/jwt/login", {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/login`, {
 	grant_type: "password",
 	username: email,
         password: password,
@@ -28,7 +28,7 @@ function LoginForm() {
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
 
-      const totpResponse = await axios.get("http://10.2.0.50:4002/auth/check-totp", {
+      const totpResponse = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-totp`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -63,7 +63,7 @@ function LoginForm() {
         placeholder="Password"
         required
       />
-      <button type="submit">Login</button>
+      <button type="submit">ログイン</button>
       <p>{message}</p>
     </form>
   );

@@ -13,8 +13,8 @@ function Dashboard() {
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Welcome to Your Dashboard!</h1>
-      <p>This is your personal dashboard where you can manage your account and settings.</p>
+      <h1>ダッシュボードへようこそ!</h1>
+      <p>個人用ダッシュボード</p>
       <button onClick={() => alert("This is a demo button")}>Click Me</button>
     </div>
   );

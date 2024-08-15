@@ -19,7 +19,7 @@ function TfaForm() {
         return;
       }
 
-      const response = await axios.post('http://10.2.0.50:4002/auth/login-tfa', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login-tfa`, {
         username: email,
         password: password,
         otp: otp
@@ -45,7 +45,7 @@ function TfaForm() {
         placeholder="Enter your TOTP code"
         required
       />
-      <button type="submit">Verify TOTP</button>
+      <button type="submit">MFAチェック</button>
       {message && <p className="error-message">{message}</p>}
     </form>
   );

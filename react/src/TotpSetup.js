@@ -12,7 +12,7 @@ function TotpSetup() {
     const fetchTotpUri = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://10.2.0.50:4002/auth/totp-setup", {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/totp-setup`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -35,7 +35,7 @@ function TotpSetup() {
     setMessage("");
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post("http://10.2.0.50:4002/auth/setup-totp", {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/setup-totp`, {
         otp: otp,
       }, {
         headers: {
@@ -61,7 +61,7 @@ function TotpSetup() {
         <p>Loading...</p>
       ) : totpUri ? (
         <div>
-          <p>Scan this QR code with your authenticator app:</p>
+          <p>認証アプリでこの QR コードをスキャンします。</p>
           <div className="qr-code">
             <img src={`https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(totpUri)}`} alt="TOTP QR Code" />
           </div>
@@ -73,7 +73,7 @@ function TotpSetup() {
               placeholder="Enter TOTP Code"
               required
             />
-            <button type="submit">Setup TOTP</button>
+            <button type="submit">MFA登録</button>
           </form>
         </div>
       ) : (

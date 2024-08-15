@@ -12,7 +12,7 @@ function RegisterForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://10.2.0.50:4002/auth/register', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, {
         email,
         password,
       }, {
@@ -47,7 +47,7 @@ function RegisterForm() {
         placeholder="Password"
         required
       />
-      <button type="submit">Register</button>
+      <button type="submit">登録</button>
       {message && <p className="error-message">{message}</p>}
     </form>
   );
